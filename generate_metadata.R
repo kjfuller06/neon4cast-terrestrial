@@ -1,4 +1,9 @@
-
+library(EML)
+library(emld)
+emld::eml_version("eml-2.2.0")
+library(lubridate)
+remotes::install_github("eco4cast/EFIstandards")
+library(EFIstandards)
 
 generate_metadata <- function(forecast_file, metadata_yaml, forecast_issue_time, forecast_iteration_id, forecast_file_name_base,start_time=NULL,stop_time=NULL){
   
@@ -118,3 +123,4 @@ generate_metadata <- function(forecast_file, metadata_yaml, forecast_issue_time,
   return(meta_data_filename)
 }
 
+generate_metadata("terrestrial-2021-01-01-ISWG.csv", "metadata.yml", "2021-01-29", "80808080", "terrestrial-2021-01-01-ISWG", start_time=NULL,stop_time=NULL)
