@@ -1,26 +1,37 @@
-team_name: ISWG
+team_name: pers_null_daily
 team_list:
+  - individualName:
+      givenName: Quinn
+      surName: Thomas 
+      id: https://orcid.org/0000-0003-1282-7825
   - individualName:
       givenName: Alex
       surName: Young
       id: 
   - individualName:
-      givenName: Kathryn
-      surName: Fuller
-      id: https://orcid.org/0000-0001-9100-7635
-  - individualName:
-      givenName: Elisa
-      surName: Stefaniak
-      id: https://orcid.org/0000-0003-2998-5619
-  - individualName: 
-      givenName: Jenna
-      surName: Zukswert
-      id: https://orcid.org/0000-0003-2246-0406
-  - individualName: 
-      givenName: Laura
-      surName: Super
+      givenName: George
+      surName: Burba
       id: 
-
+  - individualName:
+      givenName: Jamie
+      surName: Cleverly
+      id: 
+  - individualName:
+      givenName: Ankur
+      surName: Desai
+      id: 
+  - individualName:
+      givenName: Andy
+      surName: Fox
+      id: 
+  - individualName:
+      givenName: William
+      surName: Hammond    
+      id: h
+  - individualName:
+      givenName: Danica
+      surName: Lombardozzi
+      id: 
 sites: ["BART", "KONZ", "OSBS", "SRER"]
 metadata:
   forecast:
@@ -31,18 +42,44 @@ metadata:
     metadata_standard_version: 0.3  #Don't change
     model_description:
       forecast_model_id: "null"
-      name: historical mean and error
+      name: state-space Bayesian null
       type: empirical
-      repository: https://github.com/foxeswithdata/ISWG4cast-terrestrial 
+      repository: https://github.com/eco4cast/neon4cast-terrestrial
     initial_conditions:
-      status: absent
+      status: assimilates
+      complexity: 2
+      propagation:
+        type: ensemble
+        size: 2000
+      assimilation:
+        type: refit
+        reference: "NA"
+        complexity: 4
     drivers:
       status: absent
     parameters:
       status: absent
+      complexity: 2
+      propagation:
+        type: ensemble
+        size: 2000
+      assimilation:
+        type: refit
+        reference: "NA"
+        complexity: 4
     random_effects:
       status: absent
     process_error:
-      status: absent
+      status: assimilates
+      complexity: 2
+      propagation:
+        type: ensemble
+        size: 2000
+      assimilation:
+        type: refit
+        reference: "NA"
+        complexity: 4
+      covariance: FALSE
     obs_error:
-      status: absent
+      status: present
+      complexity: 2

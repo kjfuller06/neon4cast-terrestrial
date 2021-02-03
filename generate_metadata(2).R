@@ -1,12 +1,9 @@
-paths = .libPaths()
-.libPaths(paths[2])
-remotes::install_github("eco4cast/EFIstandards")
-library(EFIstandards)
 library(EML)
 library(emld)
-library(XML)
 emld::eml_version("eml-2.2.0")
 library(lubridate)
+remotes::install_github("eco4cast/EFIstandards")
+library(EFIstandards)
 
 generate_metadata <- function(forecast_file, metadata_yaml, forecast_issue_time, forecast_iteration_id, forecast_file_name_base,start_time=NULL,stop_time=NULL){
   
@@ -27,7 +24,7 @@ generate_metadata <- function(forecast_file, metadata_yaml, forecast_issue_time,
     attributes <- tibble::tribble(
       ~attributeName,     ~attributeDefinition,                          ~unit,                  ~formatString,  ~definition, ~numberType,
       "time",              "[dimension]{time}",                          "year",                 "YYYY-MM-DD",   NA,          "datetime",
-      "ensemble",          "[dimension]{index of ensemble member}",                "dimensionless",                     NA,           NA,  "integer",
+      "ensemble",          "[dimension]{index of ensemble member}",      "dimensionless",         NA,            NA,          "integer",
       "siteID",             "[dimension]{neon site}",                     NA,                     NA,           "NEON site ID",  "character",
       "obs_flag",          "[flag]{observation error}",                  "dimensionless",         NA,           NA,           "integer",
       "nee",               "[variable]{net ecosystem exchange}",         "dimensionless",         NA,           NA,           "real",
@@ -126,7 +123,4 @@ generate_metadata <- function(forecast_file, metadata_yaml, forecast_issue_time,
   return(meta_data_filename)
 }
 
-library(emld)
-
-generate_metadata("terrestrial-2021-01-01-ISWG_ideal.csv", "metadata.yml", "2021-01-29", "80808080", "terrestrial-2021-01-01-ISWG", start_time=NULL,stop_time=NULL)
-
+generate_metadata("terrestrial-2021-01-01-ISWG.csv", "metadata.yml", "2021-01-29", "80808080", "terrestrial-2021-01-01-ISWG", start_time=NULL,stop_time=NULL)

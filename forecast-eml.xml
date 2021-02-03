@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2" packageId="80808080" system="datetime" xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0 https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd">
   <dataset>
-    <title>Daily persistence null forecast for nee and lee</title>
+    <title>Summarized historical data as a forecast</title>
     <creator>
       <individualName>
         <givenName>Alex</givenName>
         <surName>Young</surName>
       </individualName>
     </creator>
-    <creator>
+    <creator id="https://orcid.org/0000-0001-9100-7635">
       <individualName>
         <givenName>Kathryn</givenName>
         <surName>Fuller</surName>
@@ -17,7 +17,7 @@
     <creator>
       <individualName>
         <givenName>Elisa</givenName>
-        <surName>Stefaniak</surName>
+        <surname>Stefaniak</surname>
       </individualName>
     </creator>
     <creator>
@@ -32,8 +32,14 @@
         <surName>Super</surName>
       </individualName>
     </creator>
-    <pubDate>2021-01-29</pubDate>
-    <intellectualRights>https://creativecommons.org/licenses/by/4.0/</intellectualRights>
+    <pubDate>2021-02-02</pubDate>
+    <abstract/>
+    <keywordSet>
+      <keyword>forecast</keyword>
+      <keyword>timeseries</keyword>
+      <keywordThesaurus>EFI controlled vocabulary</keywordThesaurus>
+    </keywordSet>
+    <intellectualRights>http://www.lternet.edu/data/netpolicy.html.</intellectualRights>
     <coverage>
       <geographicCoverage id="BART">
         <geographicDescription>BART, D01</geographicDescription>
@@ -97,27 +103,22 @@
             <calendarDate>2021-01-01</calendarDate>
           </beginDate>
           <endDate>
-            <calendarDate>2021-01-01</calendarDate>
+            <calendarDate>2021-02-04</calendarDate>
           </endDate>
         </rangeOfDates>
       </temporalCoverage>
     </coverage>
-    <contact>
-      <individualName>
-        <givenName>Alex</givenName>
-        <surName>Young</surName>
-      </individualName>
-    </contact>
+    <contact/>
     <dataTable>
       <entityName>forecast</entityName>
       <entityDescription>Forecast of NEE and LE for four NEON sites</entityDescription>
       <physical>
         <objectName>terrestrial-2021-01-01-ISWG.csv</objectName>
-        <size unit="bytes">514</size>
-        <authentication method="MD5">250c43b82dfc0f730c61abda4a644f44</authentication>
+        <size unit="bytes">17081</size>
+        <authentication method="MD5">f875eea8d59667385f80f96a4d7df39c</authentication>
         <dataFormat>
           <textFormat>
-            <recordDelimiter>&#13;
+            <recordDelimiter>
 </recordDelimiter>
             <attributeOrientation>column</attributeOrientation>
             <simpleDelimited>
@@ -139,18 +140,13 @@
           </measurementScale>
         </attribute>
         <attribute>
-          <attributeName>ensemble</attributeName>
-          <attributeDefinition>[dimension]{index of ensemble member}</attributeDefinition>
-          <storageType>float</storageType>
+          <attributeName>statistic</attributeName>
+          <attributeDefinition>[dimension]{type of statistic}</attributeDefinition>
+          <storageType>string</storageType>
           <measurementScale>
-            <ratio>
-              <unit>
-                <standardUnit>dimensionless</standardUnit>
-              </unit>
-              <numericDomain>
-                <numberType>integer</numberType>
-              </numericDomain>
-            </ratio>
+            <nominal>
+              <nonNumericDomain/>
+            </nominal>
           </measurementScale>
         </attribute>
         <attribute>
@@ -159,17 +155,13 @@
           <storageType>string</storageType>
           <measurementScale>
             <nominal>
-              <nonNumericDomain>
-                <textDomain>
-                  <definition>NEON site ID</definition>
-                </textDomain>
-              </nonNumericDomain>
+              <nonNumericDomain/>
             </nominal>
           </measurementScale>
         </attribute>
         <attribute>
           <attributeName>obs_flag</attributeName>
-          <attributeDefinition>[flag]{observation error}</attributeDefinition>
+          <attributeDefinition>[dimension]{observation error}</attributeDefinition>
           <storageType>float</storageType>
           <measurementScale>
             <ratio>
@@ -229,7 +221,7 @@
         </attribute>
         <attribute>
           <attributeName>forecast</attributeName>
-          <attributeDefinition>[flag]{whether represents forecast}</attributeDefinition>
+          <attributeDefinition>[flag]{whether time step assimilated data}</attributeDefinition>
           <storageType>float</storageType>
           <measurementScale>
             <ratio>
@@ -267,7 +259,7 @@
           <status>absent</status>
         </drivers>
         <forecast_horizon>35 days</forecast_horizon>
-        <forecast_issue_time>2021-01-29</forecast_issue_time>
+        <forecast_issue_time>2021-02-02</forecast_issue_time>
         <forecast_iteration_id>80808080</forecast_iteration_id>
         <forecast_project_id>ISWG</forecast_project_id>
         <initial_conditions>
@@ -275,10 +267,10 @@
         </initial_conditions>
         <metadata_standard_version>0.3</metadata_standard_version>
         <model_description>
-          <forecast_model_id>null</forecast_model_id>
-          <name>historical mean and error</name>
-          <repository>https://github.com/foxeswithdata/ISWG4cast-terrestrial</repository>
-          <type>empirical</type>
+          <forecast_model_id>80808080</forecast_model_id>
+          <name>historical data summary as forecast</name>
+          <repository/>
+          <type>statistical</type>
         </model_description>
         <obs_error>
           <status>absent</status>
@@ -287,7 +279,12 @@
           <status>absent</status>
         </parameters>
         <process_error>
-          <status>absent</status>
+          <complexity>1</complexity>
+          <covariance>FALSE</covariance>
+          <propagates>
+            <type>analytic</type>
+          </propagates>
+          <status>propagates</status>
         </process_error>
         <random_effects>
           <status>absent</status>
