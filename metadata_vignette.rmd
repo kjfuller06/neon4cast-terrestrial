@@ -375,7 +375,7 @@ We are now ready to write out a valid EML document:
 ##### R
   
 ```{r}
-write_eml(my_eml, "terrestrial-forecast-2021-01-01-ISWG.xml")
+write_eml(my_eml, "terrestrial_daily-forecast-2021-01-01-ISWG.xml")
 ```
 
 #### {-}

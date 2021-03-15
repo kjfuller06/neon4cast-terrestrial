@@ -89,5 +89,5 @@ if(efi_server){
 
 Sys.setenv("AWS_DEFAULT_REGION" = "data",
            "AWS_S3_ENDPOINT" = "ecoforecast.org")
-write.csv(mtcars, "mtcars.csv")
-aws.s3::put_object("terrestrial-forecast-2021-01-01-ISWG.xml", bucket = "submissions")
+# write.csv(mtcars, "mtcars.csv")
+aws.s3::put_object("terrestrial_daily-forecast-2021-01-01-ISWG.xml", bucket = "submissions")
